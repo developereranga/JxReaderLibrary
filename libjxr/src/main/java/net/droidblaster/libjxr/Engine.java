@@ -1,4 +1,4 @@
-package net.droidblaster.jxreader;
+package net.droidblaster.libjxr;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -24,18 +24,16 @@ import java.util.List;
 /**
  * Created by erangas on 6/16/16.
  */
-public class JxReader {
-    final public int POST = 0;
-    final public int GET = 1;
-    final public int JSON_POST = 2;
+public class Engine {
 
-    public JSONObject ReadJson(int method, String url, List<NameValuePair> params, JSONObject jsonObject) {
+
+    protected JSONObject ReadJson(int method, String url, List<NameValuePair> params, JSONObject jsonObject) {
         JSONObject responsJson = null;
         switch (method) {
             case 0:
                 try {
                     responsJson = new JSONObject(new JsonStringBuilder().Build(new Requester().requestPost(url, params)).toString());
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     responsJson = new ErrorReporter().createError(e.getLocalizedMessage());
                 }
                 break;
@@ -62,47 +60,39 @@ public class JxReader {
     }
 
     private class JsonStringBuilder {
-        public StringBuilder Build(InputStream inputStream) {
+        public StringBuilder Build(InputStream inputStream)throws Exception{
             StringBuilder stringBuilder = new StringBuilder();
             String row = null;
-            try {
+
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"), 8);
                 while ((row = bufferedReader.readLine()) != null) {
                     stringBuilder.append(row + "\n");
                 }
                 inputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
+
                 return stringBuilder;
-            }
+
         }
     }
 
     private class Requester {
 
-        private InputStream requestPost(String URL, List<NameValuePair> PARAMETERS) {
+        private InputStream requestPost(String URL, List<NameValuePair> PARAMETERS) throws Exception {
             InputStream inputStream = null;
-            try {
+
                 DefaultHttpClient httpClient = new DefaultHttpClient();
                 HttpPost httpPost = new HttpPost(URL);
                 httpPost.setEntity(new UrlEncodedFormEntity(PARAMETERS));
                 HttpResponse response = httpClient.execute(httpPost);
                 inputStream = response.getEntity().getContent();
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            } catch (ClientProtocolException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
+
                 return inputStream;
-            }
+
         }
 
-        private InputStream requestGET(String URL, List<NameValuePair> PARAMETERS) {
+        private InputStream requestGET(String URL, List<NameValuePair> PARAMETERS) throws  Exception {
             InputStream inputStream = null;
-            try {
+
 
                 DefaultHttpClient httpClient = new DefaultHttpClient();
                 if (PARAMETERS != null) {
@@ -112,22 +102,16 @@ public class JxReader {
                 HttpGet httpGet = new HttpGet(URL);
                 HttpResponse response = httpClient.execute(httpGet);
                 inputStream = response.getEntity().getContent();
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            } catch (ClientProtocolException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
+
                 return inputStream;
-            }
+
 
 
         }
 
-        private String requestJsonPost(JSONObject jsonObject, String URL) {
+        private String requestJsonPost(JSONObject jsonObject, String URL) throws  Exception {
             String readText = "";
-            try {
+
                 HttpClient httpClient = new DefaultHttpClient();
                 HttpPost request = new HttpPost(URL);
                 StringEntity e = new StringEntity(jsonObject.toString(), "UTF-8");
@@ -135,11 +119,7 @@ public class JxReader {
                 request.setHeader("content-type", "application/json");
                 HttpResponse response = httpClient.execute(request);
                 readText = EntityUtils.toString(response.getEntity());
-            } catch (IOException e) {
-                return new ErrorReporter().createError(e.getLocalizedMessage()).toString();
-            } catch (Exception e) {
-                return new ErrorReporter().createError(e.getLocalizedMessage()).toString();
-            }
+
             return readText;
         }
     }

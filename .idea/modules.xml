@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/JxReaderLibrary.iml" filepath="$PROJECT_DIR$/JxReaderLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/jxreader/jxreader.iml" filepath="$PROJECT_DIR$/jxreader/jxreader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libjxr/libjxr.iml" filepath="$PROJECT_DIR$/libjxr/libjxr.iml" />
     </modules>
   </component>
 </project>

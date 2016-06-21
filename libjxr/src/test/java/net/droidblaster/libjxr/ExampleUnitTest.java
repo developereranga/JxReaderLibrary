@@ -1,4 +1,4 @@
-package net.droidblaster.jxreader;
+package net.droidblaster.libjxr;
 
 import org.junit.Test;
 

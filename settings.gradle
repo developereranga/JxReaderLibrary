@@ -1,1 +1,1 @@
-include ':app', ':libjxr', ':jxreader'
+include ':app', ':libjxr'

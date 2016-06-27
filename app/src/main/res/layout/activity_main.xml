@@ -9,40 +9,53 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.droidblaster.jxreaderlibrary.MainActivity">
     <Button
+        android:id="@+id/btnPost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnPost"
         android:text="Make http post"/>
     <Button
+        android:id="@+id/btnGet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnGet"
-         android:text="Make http get"
         android:layout_below="@+id/btnPost"
+        android:text="Make http get"
          />
 
     <Button
+        android:id="@+id/btnJsonPost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Make http json post"
-        android:id="@+id/btnJsonPost"
         android:layout_below="@+id/btnGet"
+        android:text="Make http json post"
          />
 
+    <Button
+        android:id="@+id/btnImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnJsonPost"
+        android:text="Load Image" />
+
     <TextView
+        android:id="@+id/txt_response"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="json response will appear here"
-        android:id="@+id/txt_response"
-        android:layout_below="@+id/btnJsonPost"
+        android:layout_alignEnd="@+id/btnJsonPost"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/btnJsonPost"
-        android:layout_alignEnd="@+id/btnJsonPost"
-        android:layout_alignParentBottom="true" />
+        android:layout_below="@+id/btnImage"
+        android:text="json response will appear here" />
     <ImageView
+        android:id="@+id/img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/img"/>
+        android:layout_alignEnd="@+id/btnJsonPost"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnJsonPost"
+        android:layout_below="@+id/btnImage" />
 
 </RelativeLayout>

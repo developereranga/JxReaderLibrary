@@ -1,8 +1,8 @@
 # JxReaderLibrary
- ##Importing library to your project
+## Importing library to your project
  1. Download the or clone a copy to your computer.
  2. In android studio 
-  ```ruby File -> New -> Import Module -> Select libjxt folder in cloned dir
+   ```ruby File -> New -> Import Module -> Select libjxt folder in cloned dir
 
 ## What is this 
 1. This is a networking library

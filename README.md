@@ -20,7 +20,8 @@
 JxReader jxReader = new JxReader(type of request,url,jsonObject, params);
 ```
 
-### JxReader JsonPost Request 
+### JxReader JsonPost Request
+
 ```ruby
 JSONObject tempObj = new JSONObject();
 try {
@@ -39,15 +40,17 @@ progressDialog.dismiss();
 }
 });
 jxReader.execute();
-
 ```
+
 ### JxReader GET Request 
+
 ```ruby
 List<NameValuePair> params = new ArrayList<NameValuePair>();
 params.add(new BasicNameValuePair("name", "Eranga"));
 JxReader jxReader = new JxReader(new JxReader().GET, "http://droidblaster.net/jxreader/get.php", null, params);
 jxReader.setListener(new JxReader.JxReaderListener() {
-@Override    public void onHttpRequesting() {
+@Override
+public void onHttpRequesting() {
 progressDialog.show();
 }
 @Override
@@ -60,11 +63,15 @@ jxReader.execute();
 ```
 
 ### JxReader POST Request 
+
+```ruby
+
 List<NameValuePair> params = new ArrayList<NameValuePair>();
 params.add(new BasicNameValuePair("name", "Eranga"));
 JxReader jxReader = new JxReader(new JxReader().POST, "http://droidblaster.net/jxreader/post.php", null, params);
 jxReader.setListener(new JxReader.JxReaderListener() {
-@Override    public void onHttpRequesting() {
+@Override
+public void onHttpRequesting() {
 progressDialog.show();
 }
 @Override
@@ -74,7 +81,9 @@ progressDialog.dismiss();
 }
 });
 jxReader.execute();
+
 ```
+
 ## JxReader request tracing system
 
 *. We can get final output as an an instance of JsonOut. This class provide most critical information to developer. 

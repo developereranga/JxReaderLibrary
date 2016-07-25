@@ -18,6 +18,7 @@ public class JxReader extends AsyncTask<Void, Void, JsonOut> {
     String url;
     JSONObject jsonObject;
     List<NameValuePair> params;
+    private JxReaderListener jxrListener;
 
     public JxReader() {
     }
@@ -28,15 +29,6 @@ public class JxReader extends AsyncTask<Void, Void, JsonOut> {
         this.jsonObject = jsonObject;
         this.params = params;
     }
-
-    public interface JxReaderListener {
-        void onHttpRequesting();
-
-        void onResponseRecived(JsonOut result);
-    }
-
-    private JxReaderListener jxrListener;
-
 
     final public void setListener(JxReaderListener listener) {
         jxrListener = listener;
@@ -67,6 +59,12 @@ public class JxReader extends AsyncTask<Void, Void, JsonOut> {
     final protected void onPostExecute(JsonOut result) {
 
         if (jxrListener != null)
-            jxrListener.onResponseRecived(result);
+            jxrListener.onResponseReceived(result);
+    }
+
+    public interface JxReaderListener {
+        void onHttpRequesting();
+
+        void onResponseReceived(JsonOut result);
     }
 }

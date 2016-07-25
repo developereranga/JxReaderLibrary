@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                 }
 
-                JxReader jxReader = new JxReader(new JxReader().JSON_POST, "http://droidblaster.net/jxreader/jsonPost.php", tempObj, null);
+
                 jxReader.setListener(new JxReader.JxReaderListener() {
                     @Override
                     public void onHttpRequesting() {
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onResponseRecived(JsonOut result) {
+                    public void onResponseReceived(JsonOut result) {
                         tResponse.setText(result.getResponse().toString());
                         progressDialog.dismiss();
                     }
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onResponseRecived(JsonOut result) {
+                    public void onResponseReceived(JsonOut result) {
                         tResponse.setText(result.getResponse().toString());
                         progressDialog.dismiss();
                     }
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onResponseRecived(JsonOut result) {
+                    public void onResponseReceived(JsonOut result) {
 
                         tResponse.setText(result.getResponse().toString());
                         progressDialog.dismiss();
